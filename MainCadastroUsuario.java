@@ -12,17 +12,14 @@ public class MainCadastroUsuario {
 
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-		
-		System.out.println("***********************************");
-		System.out.println("***********************************");
-		System.out.println("=====BEM-VINDE AO GYM SYSTEM=======");
-		System.out.println("***********************************");
-		System.out.println("***********************************");
+		System.out.println("********************************************************");
+		System.out.println("********************************************************");
+		System.out.println("=====BEM-VINDE AO PROGRAMA DE CADASTRO DE USUÁRIO=======");
+		System.out.println("********************************************************");
+		System.out.println("********************************************************");
 
 		boolean rodando = true;
-
 		while (rodando) {
-
 			System.out.println("[1] Cadastrar novo usuário");
 			System.out.println("[2] Calcular IMC (Índice de massa corporal)");
 			System.out.println("[3] Calcular TMB (Taxa metabólica basal)");
@@ -36,26 +33,24 @@ public class MainCadastroUsuario {
 			String opcao = leia.nextLine();
 
 			switch (opcao) {
-			
 			case "1": {
-				Usuario u = new Usuario();
-				System.out.println("\r");
 				System.out.println("=========CADASTRO DE USUARIO==========");
-				System.out.println("Digite seu e-mail: ");
+				System.out.print("Digite seu e-mail: ");
 				String email = leia.nextLine();
-				System.out.println("Digite sua senha: ");
+				System.out.print("Digite sua senha: ");
 				String senha = leia.nextLine();
-				System.out.println("Digite seu nome: ");
+				System.out.print("Digite seu nome: ");
 				String nome = leia.nextLine();
-				System.out.println("Digite sua idade: ");
+				System.out.print("Digite sua idade: ");
 				int idade = leia.nextInt();
-				u.verificarIdade();
-				System.out.println("Digite seu peso: ");
+				System.out.print("Digite seu peso: ");
 				double peso = leia.nextDouble();
-				System.out.println("Digite sua altura: ");
+				System.out.print("Digite sua altura: ");
 				double altura = leia.nextDouble();
-				System.out.println("Digite seu genêro: [1] fem [2] masc");
+				System.out.print("Digite seu genêro: ");
 				int genero = leia.nextInt();
+
+				Usuario u = new Usuario();
 				u.setEmail(email);
 				u.setSenha(senha);
 				u.setNome(nome);
@@ -67,34 +62,32 @@ public class MainCadastroUsuario {
 				break;
 			}
 			case "2": {
+				System.out.println("=========CÁLCULO IMC=========");
 				System.out.println("Digite seu peso: ");
 				double peso = leia.nextDouble();
 				System.out.println("Digite sua altura: ");
 				double altura = leia.nextDouble();
-				Usuario u = new Usuario();
-				u.setPeso(peso);
-				u.setAltura(altura);
-				u.calculoIMC();
-				System.out.println("\r");
+				Usuario uTemp = new Usuario();
+				uTemp.setPeso(peso);
+				uTemp.setAltura(altura);
+				uTemp.calculoIMC();
+				break;
 			}
 			case "3": {
-
+				System.out.println("=========CÁLCULO IMC=========");
 				break;
 			}
 			case "4": {
+				System.out.println("=========????=========");
 				break;
 			}
 			case "5": {
 				System.out.println("=========USUÁRIOS CADASTRADOS=========");
 				for (int i = 0; i < usuarios.size(); i++) {
-					
+
 					Usuario uTemp = usuarios.get(i);
 					System.out.println("E-mail:" + usuarios.get(i).getEmail());
 					System.out.println("Senha: " + usuarios.get(i).getSenha());
-					System.out.println("Nome: " + usuarios.get(i).getNome());
-					System.out.println("Peso: " + usuarios.get(i).getPeso());
-					System.out.println("Altura: " + usuarios.get(i).getAltura());
-					System.out.println("Gênero: " + usuarios.get(i).getGenero());
 					System.out.println("\r");
 				}
 				break;
@@ -104,7 +97,8 @@ public class MainCadastroUsuario {
 				System.out.println("Digite o e-mail cadastrado: ");
 				String email = leia.nextLine();
 
-				for (int i = 0; i < usuarios.size();) {
+				boolean encontrado = false;
+				for (int i = 0; i < usuarios.size(); i++) {
 
 					Usuario uTemp = usuarios.get(i);
 
@@ -112,17 +106,11 @@ public class MainCadastroUsuario {
 						System.out.println("Usuário encontrado");
 						System.out.println("\tEmail: " + uTemp.getEmail());
 						System.out.println("\tSenha: " + uTemp.getSenha());
-						System.out.println("\tNome: " + uTemp.getNome());
-						System.out.println("\tPeso: " + uTemp.getPeso());
-						System.out.println("\tAltura: " + uTemp.getAltura());
-						System.out.println("\tGenero: " + uTemp.getGenero());
-						System.out.println("\r");
+						encontrado = true;
 					}
-					break;
 				}
-				boolean encontrado = true;
 				if (!encontrado) { // ou (encontrado == false)
-					System.out.println("Não foi encontrado nenhum usuário com e-mail.");
+					System.out.println("Não foi encontrado nenhum usuário com esse e-mail.");
 					System.out.println("\r");
 				}
 				break;
@@ -130,23 +118,22 @@ public class MainCadastroUsuario {
 			case "7": {
 				System.out.println("=========ATUALIZAÇÃO DE USUÁRIOS=========");
 				for (int i = 0; i < usuarios.size(); i++) {
-					
+
 					Usuario uTemp = usuarios.get(i);
-					
+
 					System.out.println("[" + i + "]" + uTemp.getEmail());
 				}
-				
+
 				System.out.println("Digite o valor de referência: ");
 				int referencia = leia.nextInt();
 				leia.nextLine();
-				
 				System.out.println("Digite o novo e-mail: ");
 				String novoEmail = leia.nextLine();
 				System.out.println("Digite a nova senha: ");
 				String novaSenha = leia.nextLine();
 				System.out.println("Digite o novo peso: ");
 				double novoPeso = leia.nextDouble();
-				
+
 				Usuario u = usuarios.get(referencia);
 				u.setEmail(novoEmail);
 				u.setSenha(novaSenha);
@@ -154,6 +141,19 @@ public class MainCadastroUsuario {
 				break;
 			}
 			case "8": {
+				System.out.println("=========REMOVER USUÁRIO=========");
+				for (int i = 0; i < usuarios.size(); i++) {
+
+					Usuario uTemp = usuarios.get(i);
+
+					System.out.println("[" + i + "]" + uTemp.getEmail());
+				}
+				System.out.println("Digite o valor de referência: ");
+				int referencia = leia.nextInt();
+				leia.nextLine();
+
+				usuarios.remove(referencia);
+
 				break;
 			}
 			case "9": {
@@ -161,7 +161,6 @@ public class MainCadastroUsuario {
 				rodando = false;
 				break;
 			}
-
 			}
 		}
 	}

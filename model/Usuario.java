@@ -1,7 +1,5 @@
 package com.generation.academia.model;
 
-import java.util.Scanner;
-
 public class Usuario {
 	
 	private String email;
@@ -12,12 +10,6 @@ public class Usuario {
 	private int genero;
 	private double imc;
 	private int idade;
-
-	Scanner leia = new Scanner(System.in);
-
-	public void verificarIdade() {
-		
-	}
 
 	public void calculoIMC() {
 		imc = peso / (Math.pow(altura, 2));
@@ -94,15 +86,5 @@ public class Usuario {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-
-	public Scanner getLeia() {
-		return leia;
-	}
-
-	public void setLeia(Scanner leia) {
-		this.leia = leia;
-	}
-	
-	
-
+		
 }
